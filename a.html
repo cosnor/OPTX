@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.0.0/math.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <div id="graph" style="width:800px;height:500px;"></div>
+    <script>
+        // Definir la función
+        const expr = 'x^2 + 3*sin(x)';
+        const scope = {x: 0};
+        const func = math.compile(expr);
+        
+        // Crear puntos para graficar
+        const xValues = [];
+        const yValues = [];
+        
+        for (let x = -10; x <= 10; x += 0.1) {
+            scope.x = x;
+            xValues.push(x);
+            yValues.push(func.evaluate(scope));
+        }
+        
+        // Graficar con Plotly
+        const data = [{
+            x: xValues,
+            y: yValues,
+            type: 'scatter',
+            mode: 'lines',
+            line: {color: 'purple'}
+        }];
+        
+        const layout = {
+            title: 'Gráfico de ' + expr,
+            xaxis: {title: 'x'},
+            yaxis: {title: 'y'}
+        };
+        
+        Plotly.newPlot('graph', data, layout);
+    </script>
+</body>
+</html>
