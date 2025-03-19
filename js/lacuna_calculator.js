@@ -9,7 +9,6 @@ function generateSparseMatrix(n) {
         let value = Math.floor(Math.random() * 100) + 1; // Random value between 1 and 100
         matrix[row][col] = value;
     }
-
     return matrix;
 }
 
@@ -47,10 +46,42 @@ randomizeBttn.onclick = () => {
 const calcularBttn = document.getElementById("calculateButton");
 
 calcularBttn.onclick = () => {
+    // fetch
+    // URL del servidor
+    let url = "http://127.0.0.1:8000/api/matrix/";
+
     // Matriz a enviar al servidor
     let matrixtoSend = matrix; 
     // Método usado para el formato en el radio del formulario
-    let method = document.querySelector('input[name="opcion"]:checked').value;
+    let method = document.querySelector('input[name="methodOption"]:checked').value;
+    let operation = document.querySelector('input[name="operationOption"]:checked').value;
+    
+    // Objeto con los datos a enviar al servidor
+    let data = {
+        matrix: matrixtoSend,
+        method: method,
+        operation: operation
+    };
+
+    // Realizar el fetch con POST
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Success:', data);
+        // Aquí puedes manejar la respuesta del servidor}
+        // Insertar la respuesta en el DOM
+
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
+    
 
 
 }
