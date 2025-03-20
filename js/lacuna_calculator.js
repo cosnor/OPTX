@@ -111,11 +111,10 @@ document.addEventListener("DOMContentLoaded", function() {
           [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
           [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
         ],
-        "method": "CSR",
         "operation": "multiply"
       }
       
-    fetch("http://127.0.0.1:8000/api/matrix/", {
+    fetch("http://127.0.0.1:8000/api/matrix/comparison", {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -128,9 +127,9 @@ document.addEventListener("DOMContentLoaded", function() {
         // Aquí puedes manejar la respuesta del servidor}
         // Insertar la respuesta en el DOM
         const divExp = document.getElementById("exp");
-        let ctime = data.custom_implementation_time;
-        let scipy = data.scipy_time;
-        divExp.innerHTML = "Time taken by CSR implementation: " + ctime + " seconds <br> Time taken by dense implementation: " + scipy + " seconds";
+        let ctime = data.custom_sparse_time;
+        let scipy = data.dense_matrix_time;
+        divExp.innerHTML = "Time taken by format implementation: " + ctime + " seconds <br> Time taken by dense implementation: " + scipy + " seconds";
 
     })
     .catch((error) => {

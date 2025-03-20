@@ -772,3 +772,8 @@ section {
   width: 100%;
   margin: 0 auto;
 }
+
+.fix_label{
+  margin-top: 20px;
+  margin-right: 20px;
+}

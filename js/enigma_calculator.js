@@ -59,38 +59,33 @@ bttn.addEventListener("click", () => {
             // Aquí puedes manejar la respuesta del servidor}
             // Insertar la respuesta en el DOM
             
-            let x = data.axis_limits["x"]
-            // Converting the string to a array
-            x = JSON.parse(x);
-            let x1 = x[0];
-            let x2 = x[1];
-            let y = data.axis_limits["y"]
-            y = JSON.parse(y);
-            let y1 = y[0];
-            let y2 = y[1];
+            if (data.is_point_inside){
+                let x = data.axis_limits["x"]
+                // Converting the string to a array
+                x = JSON.parse(x);
+                let x1 = x[0];
+                let x2 = x[1];
+                let y = data.axis_limits["y"]
+                y = JSON.parse(y);
+                let y1 = y[0];
+                let y2 = y[1];
 
-            let point = data.points;
-            let x_point = point[0];
-            let y_point = point[1];
-            console.log(x_point, y_point);
-            calculator.setExpression({id: 'point', latex: `(${x_point},${y_point})`});
-            
-            calculator.setExpression({id: 'graph1', latex: `x=${x1}`});
-            calculator.setExpression({id: 'graph2', latex: `x=${x2}`});
-            calculator.setExpression({id: 'graph3', latex: `y=${y1}`});
-            calculator.setExpression({id: 'graph4', latex: `y=${y2}`});
-            calculator.setExpression({id: 'graph5', latex: data.function});
-            if (data.is_point_inside) {
-            message.textContent = "The point is inside the circle and the rectangle area is: " + data.rectangle_area;
-            message.style.color = "yellow";
-
-            } else {
-                
-                message.textContent = "The point is outside the circle";
+                let point = data.points;
+                let x_point = point[0];
+                let y_point = point[1];
+                console.log(x_point, y_point);
+                calculator.setExpression({id: 'point', latex: `(${x_point},${y_point})`});
+                calculator.setExpression({id: 'graph1', latex: `x=${x1}`});
+                calculator.setExpression({id: 'graph2', latex: `x=${x2}`});
+                calculator.setExpression({id: 'graph3', latex: `y=${y1}`});
+                calculator.setExpression({id: 'graph4', latex: `y=${y2}`});
+                calculator.setExpression({id: 'graph5', latex: data.function});
+                message.textContent = "The point is inside the circle and the rectangle area is: " + data.rectangle_area;
+                message.style.color = "yellow";
+            }  else {
+                message.textContent = data.error;
                 message.style.color = "yellow";
             }
-            
-    
         })
         .catch((error) => {
             console.error('Error:', error);

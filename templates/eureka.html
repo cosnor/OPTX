@@ -46,9 +46,6 @@
                     <a class="nav-link" href="../index.html">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="about.html">About Us</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="enigma.html">Enigma</a>
                 </li>
                 <li class="nav-item">
@@ -100,11 +97,11 @@
                 <h2 class="section-title">
                     What is <a href="">Eureka</a>?
                 </h2>
-                <h6 class="section-sub-title">Replica applies Taylor Series for functions and compares the real function with the <a href="">replica</a>.</h6>
+                <h6 class="section-sub-title">Eureka finds the minimum without <a href="">restrictions</a>.</h6>
                 <h2 class="section-title">
-                    <br>If you are interested in the <a href=""> Replica</a>
+                    <br>Trouble finding the minimum ? <a href="">Eureka </a>  is here to help you
                 </h2>
-                <h5 class="section-sub-title"><br> Choose a function and watch how good is the <a href="">replica</a>.</h5>
+                <h5 class="section-sub-title"><br> Choose a method, write the parameters and say <a href="">Eureka!</a></h5>
             </div>
             <!-- End of Section Title -->
             <div class="row">
@@ -117,8 +114,8 @@
                                 <div class="my-4">
                                     <i class="lnr lnr-frame-contract fs-40"></i>
                                 </div>
-                                <h4>Taylor Series</h4>
-                                <p>Watch how a function can be written in a <a href="">polynomial</a> form. Each part adds more precision.</p>
+                                <h4>Newton</h4>
+                                <p>Uses second-order derivatives (Hessian matrix) to find the <a href="">optimal</a> solution by approximating the function as a quadratic model.</p>
                             </div>
                         </div>
                         <!-- End of Feature Item -->
@@ -128,8 +125,8 @@
                                 <div class="my-4">
                                     <i class="lnr lnr-sync fs-40"></i>
                                 </div>
-                                <h4>Equation</h4>
-                                <p>The circunference equation is used to get the points to form the circunference.</p>
+                                <h4>Descent Gradient</h4>
+                                <p>A first-order optimization algorithm that iteratively updates parameters in the direction of the negative gradient to minimize a function. </p>
                             </div>
                         </div>
                         <!-- End of Feature Item -->
@@ -139,8 +136,8 @@
                                 <div class="my-4">
                                     <i class="lnr lnr-magnifier fs-40"></i>
                                 </div>
-                                <h4>Solution</h4>
-                                <p>The solution finds the points where the triangle passes so we can fing the area.</p>
+                                <h4>Simulated Annealing</h4>
+                                <p>It explores solutions by occasionally accepting worse solutions to escape local minima, gradually reducing randomness over time.</p>
                             </div>
                         </div>
                         <!-- End of Feature Item -->
@@ -164,8 +161,8 @@
 
                         <div class="col-md-4 offset-md-1 col-sm-6" data-aos="fade-right">
                             <h4 class="mb-4">Here it is, Eureka!</h4>
-                            <p>Select the method that you prefer and complete the info.</p>
-                            <br><br><label>Choose the Method</label>
+                            <p>Select the method that you prefer and complete the info. The function will be: \( y = (x - 3)^2\)</p>
+                            <label>Choose the Method</label>
                             <form id="methodForm">
                                 <label>
                                     <input type="radio" name="functionOption" value=1 checked> Newton
@@ -174,15 +171,44 @@
                                     <input type="radio" name="functionOption" value=2 > Descent Gradient
                                 </label><br>
                                 <label>
-                                    <input type="radio" name="functionOption" value=3 > 
+                                    <input type="radio" name="functionOption" value=3 > Simulated Annealing
                                 </label><br>
                             </form>
-                            <label for="numberInput">Choose a number of terms</label>
-                            <input class="mb-4" type="number" id="numberInput" min="1" oninput="validateNumber()">
+                            <label class="fix_label" for="numberInput">Choose an initial x-point</label><br>
+                            <input  type="number" id="pointInput" min="0" oninput="validateNumber()">
+                            <label class="fix_label" for="numberInput">Choose a max number of iterations</label>
+                            <input type="number" id="iterInput" min="0" oninput="validateNumber2()">
                             <br>
-                            <label for="numberInput">Choose an approximation point</label>
-                            <input type="number" id="pointInput" min="0" oninput="validateNumber2()">
-                            <button id="calculateButton" type="button" class="btn btn-outline-primary my-4">Replicate</button>
+                            <label class="fix_label" for="numberInput">Tolerance</label>
+                            <select  name="tolerance" id="toleranceCombo"  >
+                                <option value="0.1">0.1</option>
+                                <option value="0.01">0.01</option>
+                                <option value="0.001">0.001</option>
+                                <option value="0.0001">0.0001</option>
+                                <option value="0.00001">0.00001</option>
+                                <option value="0.000001">0.000001</option>
+                            </select>
+                            <br>
+                            <label class="fix_label" for="numberInput">Learning/cooling rate</label>
+                            <select name="tolerance" id="rateCombo">
+                                <option value="0.001">0.001</option>
+                                <option value="0.01">0.01</option>
+                                <option value="0.1">0.1</option>
+                                <option value="0.5">0.5</option>
+                                <option value="0.9">0.9</option>
+                                <option value="0.99">0.99</option>
+                            </select>
+                            <label class="fix_label" for="numberInput">Initial temperature</label>
+                            <select name="tolerance" id="temperatureCombo">
+                                <option value="0.1">0.1</option>
+                                <option value="0.01">0.01</option>
+                                <option value="0.001">0.001</option>
+                                <option value="0.0001">0.0001</option>
+                                <option value="0.00001">0.00001</option>
+                                <option value="0.000001">0.000001</option>
+                            </select>
+                            <br>
+                            <button id="calculateButton" type="button" class="btn btn-outline-primary my-4">Search</button>
                         </div><!--/ .col-md-4.col-md-offset-2.col-sm-6 -->
 
                         <div class="col-md-4 offset-md-right-2 col-sm-6" data-aos="fade-left">
@@ -211,28 +237,6 @@
          	<div class="col-lg-4 col-md-12 d-flex align-items-center">
          		<p class="mx-auto text-center mb-0">&copy; 2025 OPTX</p>
          	</div>
-        
-            <!-- Poner Github -->
-            <div class="col-lg-4 col-md-12">
-            	<nav class="nav nav-mastfoot justify-content-center">
-	                <a class="nav-link" href="#">
-	                	<i class="fab fa-facebook-f"></i>
-	                </a>
-	                <a class="nav-link" href="#">
-	                	<i class="fab fa-twitter"></i>
-	                </a>
-	                <a class="nav-link" href="#">
-	                	<i class="fab fa-instagram"></i>
-	                </a>
-	                <a class="nav-link" href="#">
-	                	<i class="fab fa-linkedin"></i>
-	                </a>
-	                <a class="nav-link" href="#">
-	                	<i class="fab fa-youtube"></i>
-	                </a>
-	            </nav>
-            </div>
-            
         </div>
     </div>
 </footer>	<!-- External JS -->
@@ -251,7 +255,7 @@
 	<script src="../js/app.min.js "></script>
     <script src="https://www.desmos.com/api/v1.6/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script src="../js/replica_calculator.js"></script>
+    <script src="../js/eureka_calculator.js"></script>
 	<script src="//localhost:35729/livereload.js"></script>
 </body>
 </html>
