@@ -1,0 +1,6 @@
+fastapi[standard]
+pydantic
+numpy
+scipy
+sympy
+
