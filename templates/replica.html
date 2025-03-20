@@ -8,7 +8,7 @@
     -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>OPTX - Welcome to Enigma!</title>
+    <title>OPTX - Welcome to Replica!</title>
     <meta name="description" content="Roxy">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -49,13 +49,13 @@
                     <a class="nav-link" href="about.html">About Us</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="">Enigma</a>
+                    <a class="nav-link" href="enigma.html">Enigma</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="lacuna.html">Lacuna</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="replica.html">Replica</a>
+                    <a class="nav-link" href="">Replica</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="eureka.html">Eureka</a>
@@ -70,7 +70,7 @@
 
 <div class="jumbotron d-flex align-items-center">
   <div class="container text-center">
-    <h1 class="display-1 mb-4">ENIGMA</h1>
+    <h1 class="display-1 mb-4">REPLICA</h1>
   </div>
   <div class="rectangle-1"></div>
   <div class="rectangle-2"></div>
@@ -98,13 +98,13 @@
             <!-- Section Title -->
             <div class="title-wrap mb-5" data-aos="fade-up">
                 <h2 class="section-title">
-                    What is <a href="">Enigma</a>?
+                    What is <a href="">Replica</a>?
                 </h2>
-                <h6 class="section-sub-title">Enigma solves an optimization problem with restrictions</h6>
+                <h6 class="section-sub-title">Replica applies Taylor Series for functions and compares the real function with the <a href="">replica</a>.</h6>
                 <h2 class="section-title">
-                    <br>Get to know the <a href="">Enigma</a>
+                    <br>If you are interested in the <a href=""> Replica</a>
                 </h2>
-                <h5 class="section-sub-title"><br> Determine the area of the largest rectangle that can be inscribed in a circle radius of 5cm</h5>
+                <h5 class="section-sub-title"><br> Choose a function and watch how good is the <a href="">replica</a>.</h5>
             </div>
             <!-- End of Section Title -->
             <div class="row">
@@ -117,8 +117,8 @@
                                 <div class="my-4">
                                     <i class="lnr lnr-frame-contract fs-40"></i>
                                 </div>
-                                <h4>Radius</h4>
-                                <p>The radius acts as a <a href="">restriction</a>, Enigma lets you change the radius so you can observe the change in the results.</p>
+                                <h4>Taylor Series</h4>
+                                <p>Watch how a function can be written in a <a href="">polynomial</a> form. Each part adds more precision.</p>
                             </div>
                         </div>
                         <!-- End of Feature Item -->
@@ -163,32 +163,37 @@
                     <div class="row align-items-center text-white">
 
                         <div class="col-md-4 offset-md-1 col-sm-6" data-aos="fade-right">
-                            <h4 class="mb-4">Get to know Enigma!</h4>
-                            <p>Evaluate cost functions at any point and watch how changing constraints instantly transforms the feasible region. Let's focus on (0,0)</p>
-                            <label for="numberInput">Choose a radius</label>
-                            <input type="number" id="numberInput" min="1" oninput="validateNumber()">
-                            <p class="mt-4" id="message"></p>
-                            <div class="row">
-                                <div class="col-md-10">
-                                    <label for="numberInput">Choose a X point</label>
-                                </div>
-                                <div class="col-md-10">
-                                    <input class="points" type="number" id="xInput" value="0">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-10 ">
-                                    <label for="numberInput">Choose a Y point</label>
-                                </div>
-                                <div class="col-md-10 ">
-                                    <input class="points" type="number" id="yInput" value="0">
-                                </div>
-                            </div>
-                            <button id="calculateButton" type="button" class="btn btn-outline-primary my-4">Optimizar</button>
+                            <h4 class="mb-4">Find the Replica!</h4>
+                            <p>Select the number of terms, the expansion point and the function to approximate with Taylor Series.</p>
+                            <label for="numberInput">Choose a number of terms</label>
+                            <input class="mb-4" type="number" id="numberInput" min="1" oninput="validateNumber()">
+                            <br>
+                            <label for="numberInput">Choose an approximation point</label>
+                            <input type="number" id="pointInput" min="0" oninput="validateNumber2()">
+                            <br><br><label>Choose the function</label>
+                            <form id="methodForm">
+                                <label>
+                                    <input type="radio" name="functionOption" value=1 checked> \( f(x) = e^x\)
+                                </label><br>
+                                <label>
+                                    <input type="radio" name="functionOption" value=2 > \( f(x) = \\sin(x)\)
+                                </label><br>
+                                <label>
+                                    <input type="radio" name="functionOption" value=3 > \( f(x) = \\cos(x)\)
+                                </label><br>
+                                <label>
+                                    <input type="radio" name="functionOption" value=4 > \( f(x) = \\ln(1+x)\)
+                                </label><br>
+                                <label>
+                                    <input type="radio" name="functionOption" value=5 > \( f(x) = \frac{1}{1-x}\)
+                                </label><br>
+                            </form>
+                            <button id="calculateButton" type="button" class="btn btn-outline-primary my-4">Replicate</button>
                         </div><!--/ .col-md-4.col-md-offset-2.col-sm-6 -->
 
                         <div class="col-md-4 offset-md-right-2 col-sm-6" data-aos="fade-left">
                             <div id="calculator" style="width: 600px; height: 400px;"></div>
+                            <p class="mt-4" id="message"></p>
                         </div><!--/ .col-md-4.col-md-offset-right-2.col-sm-6 -->
 
                     </div><!--/ .featurettes-item -->
@@ -251,7 +256,8 @@
 	<!-- Main JS -->
 	<script src="../js/app.min.js "></script>
     <script src="https://www.desmos.com/api/v1.6/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script>
-    <script src="../js/enigma_calculator.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../js/replica_calculator.js"></script>
 	<script src="//localhost:35729/livereload.js"></script>
 </body>
 </html>
